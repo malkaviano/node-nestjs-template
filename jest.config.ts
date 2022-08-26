@@ -18,11 +18,12 @@ const config: Config.InitialOptions = {
     },
   },
   testEnvironment: 'node',
-  moduleDirectories: ['<rootDir>/src', '<rootDir>/tests', 'node_modules'],
+  moduleDirectories: ['<rootDir>/src', '<rootDir>/test', 'node_modules'],
   moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, {
     prefix: '<rootDir>/',
   }),
   modulePathIgnorePatterns: ['<rootDir>/lib/', '<rootDir>/dist/'],
+  setupFiles: ['<rootDir>/test/setEnvVars.ts'],
 };
 
 export default config;
