@@ -2,15 +2,18 @@ import { Logger } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 
+import 'dotenv/config';
+
 import { AppModule } from '@root/app.module';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   const config = new DocumentBuilder()
-    .setTitle('Habitus')
-    .setDescription('The Habitus API description')
+    .setTitle('ChangeME')
+    .setDescription('The ChangeME API description')
     .setVersion('0.1')
+    .addBearerAuth()
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
