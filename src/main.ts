@@ -3,11 +3,16 @@ import { NestFactory } from '@nestjs/core';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 
 import 'dotenv/config';
+import helmet from 'helmet';
 
 import { AppModule } from '@root/app.module';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+
+  app.use(helmet());
+
+  app.enableCors();
 
   const config = new DocumentBuilder()
     .setTitle('ChangeME')
